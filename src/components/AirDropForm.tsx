@@ -21,48 +21,53 @@ import {
 
 export function AirDropForm() {
   return (
-    <Card className="w-[350px] bg-white">
-      <div className="flex items-center justify-between">
-        <CardHeader>
-          <CardTitle>Create project</CardTitle>
-          <CardDescription>Deploy your new project in one-click.</CardDescription>
-        </CardHeader>
-        <div className="flex flex-col space-y-1.5">
-          <Select>
-            <SelectTrigger id="framework">
-              <SelectValue placeholder="Devent" />
-            </SelectTrigger>
-            <SelectContent position="popper">
-              <SelectItem value="devent">Devnet</SelectItem>
-              <SelectItem value="testnet">Testnet</SelectItem>
-            </SelectContent>
-          </Select>
+    <Card className="rounded-lg shadow-sm w-full md:max-w-lg">
+      <form>
+        <div className="flex text-white items-center justify-between px-6">
+          <CardHeader>
+            <CardTitle>Request Airdrop</CardTitle>
+            <CardDescription className="text-xs text-gray-400">Maximum of 2 requests per hour</CardDescription>
+          </CardHeader>
+          <div className="flex flex-col space-y-1.5">
+            <Select>
+              <SelectTrigger id="framework">
+                <SelectValue placeholder="Devent" />
+              </SelectTrigger>
+              <SelectContent position="popper">
+                <SelectItem value="devent">Devnet</SelectItem>
+                <SelectItem value="testnet">Testnet</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         </div>
-      </div>
-      <CardContent>
-        <form>
+        <CardContent>
           <div className="grid w-full items-center gap-4">
-            <div className="flex flex-col space-y-1.5">
-              <Input id="name" placeholder="Name of your project" />
+            <div className="flex text-white items-center gap-5">
+              <Input id="name" className="placeholder:text-white" placeholder="Wallet Address" />
               <div className="flex flex-col space-y-1.5">
-          <Select>
-            <SelectTrigger id="framework">
-              <SelectValue placeholder="Devent" />
-            </SelectTrigger>
-            <SelectContent position="popper">
-              <SelectItem value="devent">Devnet</SelectItem>
-              <SelectItem value="testnet">Testnet</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
+                <Select>
+                  <SelectTrigger id="framework">
+                    <SelectValue placeholder="Amount" />
+                  </SelectTrigger>
+                  <SelectContent position="popper">
+                    <div className="grid grid-cols-2">
+
+                      <SelectItem className="cursor-pointer" value="0.5">0.5</SelectItem>
+                      <SelectItem className="cursor-pointer" value="1">1</SelectItem>
+                      <SelectItem className="cursor-pointer" value="2.5">2.5</SelectItem>
+                      <SelectItem className="cursor-pointer" value="5">5</SelectItem>
+                    </div>
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
 
           </div>
-        </form>
-      </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button>Deploy</Button>
-      </CardFooter>
+        </CardContent>
+        <CardFooter className="flex items-center">
+          <Button className="w-full">Confirm Airdrop</Button>
+        </CardFooter>
+      </form>
     </Card>
   )
 }
