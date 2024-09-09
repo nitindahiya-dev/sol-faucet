@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Solana Airdrop DApp
 
-## Getting Started
+Welcome to the Solana Airdrop DApp! This project demonstrates how to integrate a Solana wallet with a React frontend to request airdrops of SOL tokens on the Devnet. It features a sleek UI with gradient animations and modern components, utilizing the Solana wallet adapter and `react-toastify` for notifications.
 
-First, run the development server:
+## 🛠️ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Solana Wallet Integration:** Connect and manage your wallet with the Solana wallet adapter.
+- **Airdrop Request Form:** Easily request airdrops of SOL tokens.
+- **Toast Notifications:** Get real-time feedback with user-friendly toast notifications.
+- **Modern UI:** Enjoy a visually appealing design with gradient animations and responsive components.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Before running the project, ensure you have the following installed:
 
-## Learn More
+- [Node.js](https://nodejs.org/) (v14 or later)
+- [Yarn](https://classic.yarnpkg.com/en/docs/install/) or [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
-To learn more about Next.js, take a look at the following resources:
+### Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Clone the repository:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   ```bash
+   git clone https://github.com/nitindahiya-dev/sol-faucet.git
 
-## Deploy on Vercel
+2. **Navigate to the project directory:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   cd solana-airdrop-dapp
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+3. **Install dependencies:**
+
+   ```bash
+   npm install
+
+4. **Run:**
+
+   ```bash
+   npm run dev
+
+Your app will be available at http://localhost:3000.
+
+
