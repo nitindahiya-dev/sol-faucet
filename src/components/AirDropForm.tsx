@@ -19,6 +19,7 @@ import {
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { useState } from "react";
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
+import { toast } from 'react-toastify';
 
 export function AirDropForm() {
   const { connection } = useConnection();
@@ -28,12 +29,12 @@ export function AirDropForm() {
 
   const sendAirdrop = async () => {
     if (!connected || !publicKey) {
-      alert("Please connect your wallet");
+      toast.error("Please connect your wallet");
       return;
     }
 
     if (!connection) {
-      alert("Connection is not established");
+      toast.error("Connection is not established");
       return;
     }
 
@@ -42,10 +43,10 @@ export function AirDropForm() {
     try {
       const airdropSignature = await connection.requestAirdrop(publicKey, amountInLamports);
       await connection.confirmTransaction(airdropSignature);
-      alert(`Airdrop of ${amount} SOL successful!`);
+      toast.success(`Airdrop of ${amount} SOL successful!`);
     } catch (error) {
       console.error("Airdrop failed:", error);
-      alert("Airdrop failed. Please try again.");
+      toast.error("Airdrop failed. Please try again.");
     }
   };
 
@@ -104,7 +105,7 @@ export function AirDropForm() {
           </div>
         </CardContent>
         <CardFooter className="flex items-center">
-          <Button onClick={sendAirdrop} className="w-full">
+          <Button onClick={sendAirdrop} className="w-full z-50">
             Confirm Airdrop
           </Button>
         </CardFooter>

@@ -21,7 +21,7 @@ import {
 
 export function LinkGithub() {
   return (
-    <Card className="rounded-lg shadow-sm w-full relative z-50 md:max-w-lg">
+    <Card className="rounded-lg shadow-sm w-full relative  md:max-w-lg">
       <form>
         <div className="flex text-white items-center justify-between px-6">
           <CardHeader>
@@ -30,7 +30,7 @@ export function LinkGithub() {
           </CardHeader>
         </div>
         <CardFooter className="flex items-center">
-          <Button className="w-full">Connect Your Github</Button>
+          <Button className="w-full z-50">Connect Your Github</Button>
         </CardFooter>
       </form>
     </Card>
