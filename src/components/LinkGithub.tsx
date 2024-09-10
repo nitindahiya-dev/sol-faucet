@@ -1,28 +1,19 @@
 import * as React from "react"
-
 import { Button } from "@/components/ui/button"
 import {
   Card,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 
 export function LinkGithub() {
   return (
-    <Card className="rounded-lg shadow-sm w-full relative  md:max-w-lg">
-      <form>
+    <Card className="rounded-lg shadow-sm w-full relative md:max-w-2xl backdrop-blur-md bg-opacity-30 bg-black">
+      <form onSubmit={(e) => {
+          e.preventDefault();
+        }}>
         <div className="flex text-white items-center justify-between px-6">
           <CardHeader>
             <CardTitle>Unlock a Higher Airdrop Limit</CardTitle>

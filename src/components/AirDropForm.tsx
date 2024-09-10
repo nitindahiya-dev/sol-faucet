@@ -51,7 +51,7 @@ export function AirDropForm() {
   };
 
   return (
-    <Card className="rounded-lg shadow-sm w-full md:max-w-lg">
+    <Card className="rounded-lg shadow-sm w-full md:max-w-2xl backdrop-blur-md bg-opacity-30 bg-black">
       <form
         onSubmit={(e) => {
           e.preventDefault();
