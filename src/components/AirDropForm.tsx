@@ -18,14 +18,26 @@ import {
 } from "@/components/ui/select";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { useState } from "react";
-import { LAMPORTS_PER_SOL } from "@solana/web3.js";
+import { LAMPORTS_PER_SOL, Connection, clusterApiUrl } from "@solana/web3.js";
 import { toast } from 'react-toastify';
 
 export function AirDropForm() {
   const { connection } = useConnection();
   const { publicKey, connected } = useWallet(); // Extract publicKey and connected state
-  const [network, setNetwork] = useState("");
+  const [network, setNetwork] = useState("devnet");
   const [amount, setAmount] = useState("");
+  const [loading, setLoading] = useState(false); // State to manage loading state
+
+  // Update connection object based on selected network
+  const getConnection = () => {
+    switch (network) {
+      case "testnet":
+        return new Connection(clusterApiUrl("testnet"));
+      case "devnet":
+      default:
+        return new Connection(clusterApiUrl("devnet"));
+    }
+  };
 
   const sendAirdrop = async () => {
     if (!connected || !publicKey) {
@@ -33,13 +45,16 @@ export function AirDropForm() {
       return;
     }
 
-    if (!connection) {
-      toast.error("Connection is not established");
+    const connection = getConnection(); // Get the appropriate connection
+    const amountInLamports = parseFloat(amount) * LAMPORTS_PER_SOL;
+
+    if (isNaN(amountInLamports) || amountInLamports <= 0) {
+      toast.error("Invalid amount entered");
       return;
     }
 
-    const amountInLamports = parseFloat(amount) * LAMPORTS_PER_SOL;
-    
+    setLoading(true); // Start loading
+
     try {
       const airdropSignature = await connection.requestAirdrop(publicKey, amountInLamports);
       await connection.confirmTransaction(airdropSignature);
@@ -47,11 +62,13 @@ export function AirDropForm() {
     } catch (error) {
       console.error("Airdrop failed:", error);
       toast.error("Airdrop failed. Please try again.");
+    } finally {
+      setLoading(false); // End loading
     }
   };
 
   return (
-    <Card className="rounded-lg shadow-sm w-full md:max-w-2xl backdrop-blur-md bg-opacity-30 bg-black">
+    <Card className="rounded-lg shadow-sm w-full md:max-w-2xl backdrop-blur-md bg-opacity-30 bg-black z-50">
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -59,7 +76,7 @@ export function AirDropForm() {
       >
         <div className="flex text-white items-center justify-between px-6">
           <CardHeader>
-            <CardTitle>Request Airdrop</CardTitle>
+            <CardTitle className="text-2xl">Request Airdrop</CardTitle>
             <CardDescription className="text-xs text-gray-400">
               Maximum of 2 requests per hour
             </CardDescription>
@@ -105,8 +122,12 @@ export function AirDropForm() {
           </div>
         </CardContent>
         <CardFooter className="flex items-center">
-          <Button onClick={sendAirdrop} className="w-full z-50">
-            Confirm Airdrop
+          <Button 
+            onClick={sendAirdrop} 
+            className="w-full outline-white outline-1" 
+            disabled={loading} // Disable the button while loading
+          >
+            {loading ? "Processing..." : "Confirm Airdrop"}
           </Button>
         </CardFooter>
       </form>
