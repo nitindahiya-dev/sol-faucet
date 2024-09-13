@@ -11,7 +11,7 @@ import { signIn, signOut, useSession } from "next-auth/react"; // Import necessa
 
 export function LinkGithub() {
   const { data: session } = useSession(); // Get session data
-  console.log("GitHub Client ID:", process.env.GITHUB_CLIENT_ID);
+  console.log("GitHub Client public ID:", process.env.NEXT_PUBLIC_GITHUB_ID);
 
 
   return (
