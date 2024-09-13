@@ -1,6 +1,6 @@
 import React from 'react';
-import Image from 'next/image';  // Correct import for the Image component
-import solanaLogo from '@/../public/solanaLogo.svg';  // Import your image
+import Image from 'next/image';
+import solanaLogo from '@/../public/solanaLogo.svg';
 
 const Heading = () => {
   return (
