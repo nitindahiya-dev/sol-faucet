@@ -23,7 +23,7 @@ export function LinkGithub() {
       >
         <div className="flex text-white items-center justify-between px-6">
           <CardHeader>
-            <CardTitle className="text-2xl">
+            <CardTitle className="text-xl md:text-2xl">
               {session ? `Welcome, ${session.user?.name}` : "Unlock a Higher Airdrop Limit"}
             </CardTitle>
             <CardDescription className="text-xs text-gray-400">

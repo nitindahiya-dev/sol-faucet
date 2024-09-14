@@ -76,7 +76,7 @@ export function AirDropForm() {
       >
         <div className="flex text-white items-center justify-between px-6">
           <CardHeader>
-            <CardTitle className="text-2xl">Request Airdrop</CardTitle>
+            <CardTitle className="text-xl md:text-2xl">Request Airdrop</CardTitle>
             <CardDescription className="text-xs text-gray-400">
               Maximum of 2 requests per hour
             </CardDescription>
